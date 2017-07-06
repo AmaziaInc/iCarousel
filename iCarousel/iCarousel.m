@@ -1657,17 +1657,18 @@ NSComparisonResult compareViewDepth(UIView *view1, UIView *view2, iCarousel *sel
 {
     if (!_timer)
     {
-        self.timer = [NSTimer timerWithTimeInterval:1.0/60.0
+        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0/60.0
                                              target:self
                                            selector:@selector(step)
                                            userInfo:nil
                                             repeats:YES];
+        self.timer = timer;
         
-        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
+        [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
 
 #ifdef ICAROUSEL_IOS
         
-        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:UITrackingRunLoopMode];
+        [[NSRunLoop mainRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
 
 #endif
         
